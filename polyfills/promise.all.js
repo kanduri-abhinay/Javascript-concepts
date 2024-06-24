@@ -14,7 +14,7 @@ const pr3 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-Promise.customAll = function (promises) {
+Promise.myAll = function (promises) {
   const finalPromise = new Promise((resolve, reject) => {
     const output = [];
     let completed = 0;
@@ -33,7 +33,7 @@ Promise.customAll = function (promises) {
   return finalPromise;
 };
 
-Promise.customAll([pr1, pr2, pr3])
+Promise.myAll([pr1, pr2, pr3])
   .then((res) => {
     console.log(res);
   })

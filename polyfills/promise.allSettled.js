@@ -14,7 +14,7 @@ const pr3 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-Promise.customAllSettled = function (promises) {
+Promise.myAllSettled = function (promises) {
   const finalPromise = new Promise((resolve, reject) => {
     const output = [];
     let completed = 0;
@@ -35,7 +35,7 @@ Promise.customAllSettled = function (promises) {
   return finalPromise;
 };
 
-Promise.customAllSettled([pr1, pr2, pr3])
+Promise.myAllSettled([pr1, pr2, pr3])
   .then((res) => {
     console.log(res);
   })

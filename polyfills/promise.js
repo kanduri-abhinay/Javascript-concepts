@@ -1,4 +1,4 @@
-function customPromise(executor) {
+function myPromise(executor) {
   let state = "pending";
   let value;
   const onResolveCallbacks = [];
@@ -23,21 +23,19 @@ function customPromise(executor) {
       if (typeof onResolve === "function") onResolveCallbacks.push(onResolve);
       if (typeof onReject === "function") onRejectCallbacks.push(onReject);
     },
-    catch: (onError) => {
-      if (typeof onError === "function") onRejectCallbacks.push(onError);
-    },
   };
 }
 
-const promise = new Promise((resolve, reject) => {
+const promise = new myPromise((resolve, reject) => {
   setTimeout(() => {
     resolve("custom polyfill implementation");
   }, 1000);
 });
-promise
-  .then((res) => {
+promise.then(
+  (res) => {
     console.log(res);
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+  },
+  (error) => {
+    console.log(error);
+  }
+);

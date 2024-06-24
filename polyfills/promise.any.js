@@ -14,7 +14,7 @@ const pr3 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-Promise.customAny = function (promises) {
+Promise.myAny = function (promises) {
   const finalPromise = new Promise((resolve, reject) => {
     let completed = 0;
     promises.forEach((promise, index) => {
@@ -32,7 +32,7 @@ Promise.customAny = function (promises) {
   return finalPromise;
 };
 
-Promise.customAny([pr1, pr2, pr3])
+Promise.myAny([pr1, pr2, pr3])
   .then((res) => {
     console.log(res);
   })

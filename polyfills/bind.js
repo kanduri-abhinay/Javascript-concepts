@@ -6,12 +6,12 @@ const obj = {
   lastName: "kanduri",
 };
 
-Function.prototype.customBind = function (context, ...args1) {
+Function.prototype.myBind = function (context, ...args1) {
   const func = this;
   return function (...args2) {
     func.apply(context, [...args1, ...args2]);
   };
 };
-const printNameBind = printName.customBind(obj, "pargi");
+const printNameBind = printName.myBind(obj, "pargi");
 
 printNameBind("india");

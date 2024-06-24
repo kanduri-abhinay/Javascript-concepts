@@ -14,7 +14,7 @@ const pr3 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-Promise.customRace = function (promises) {
+Promise.myRace = function (promises) {
   const finalPromise = new Promise((resolve, reject) => {
     promises.forEach((promise, index) => {
       Promise.resolve(promise)
@@ -29,7 +29,7 @@ Promise.customRace = function (promises) {
   return finalPromise;
 };
 
-Promise.customRace([pr1, pr2, pr3])
+Promise.myRace([pr1, pr2, pr3])
   .then((res) => {
     console.log(res);
   })

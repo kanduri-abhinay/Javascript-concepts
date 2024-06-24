@@ -1,5 +1,5 @@
 const arr = [-1, -2, -3, 1, 2, 3];
-Array.prototype.customMap = function (callback) {
+Array.prototype.myMap = function (callback) {
   let output = [];
   let arr = this;
   for (index = 0; index < arr.length; index++) {
@@ -8,7 +8,7 @@ Array.prototype.customMap = function (callback) {
   return output;
 };
 console.log(
-  arr.customMap((item) => {
+  arr.myMap((item) => {
     return item * item;
   })
 );

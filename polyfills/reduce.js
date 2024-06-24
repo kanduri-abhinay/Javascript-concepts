@@ -1,5 +1,5 @@
 const arr = [1, 2, 3, 4, 5, 6];
-Array.prototype.customReduce = function (callback, initialValue) {
+Array.prototype.myReduce = function (callback, initialValue) {
   const arr = this;
   let output = initialValue;
   for (ind = 0; ind < arr.length; ind++) {
@@ -7,7 +7,7 @@ Array.prototype.customReduce = function (callback, initialValue) {
   }
   return output;
 };
-const sum = arr.customReduce((total, ele) => {
+const sum = arr.myReduce((total, ele) => {
   return total + ele;
 }, 0);
 console.log(sum);

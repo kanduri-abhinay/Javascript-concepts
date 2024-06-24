@@ -1,5 +1,5 @@
 const arr = [-1, -2, -3, 1, 2, 3];
-Array.prototype.customFilter = function (callback) {
+Array.prototype.myFilter = function (callback) {
   let output = [];
   let arr = this;
   for (index = 0; index < arr.length; index++) {
@@ -8,7 +8,7 @@ Array.prototype.customFilter = function (callback) {
   return output;
 };
 console.log(
-  arr.customFilter((item) => {
+  arr.myFilter((item) => {
     return item > 0;
   })
 );
