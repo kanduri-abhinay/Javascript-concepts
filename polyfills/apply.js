@@ -1,4 +1,4 @@
-function printName([city, country]) {
+function printName(city, country) {
   console.log(this.firstName, this.lastName, city, country);
 }
 const obj = {
@@ -7,6 +7,6 @@ const obj = {
 };
 Function.prototype.myApply = function (context, args) {
   context.printName = this;
-  context.printName(args);
+  context.printName(...args);
 };
 printName.myApply(obj, ["pargi", "india"]);
