@@ -13,3 +13,14 @@ Array.prototype.myFlat = function (depth = 2) {
   return output;
 };
 console.log(arr.myFlat());
+
+function flat(arr, depth = 1) {
+  if (depth <= 0) return arr;
+  const output = [];
+  for (const item of arr) {
+    if (Array.isArray(item)) output = output.concat(flat(item, depth - 1));
+    else output.push(item);
+  }
+  return output;
+}
+console.log(arr.myFlat());
