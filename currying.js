@@ -22,8 +22,8 @@ function curry(fn) {
   return function curried(...args) {
     if (args.length >= fn.length) return fn.apply(null, args);
     else {
-      return function (...args2) {
-        return curried.apply(null, [...args, ...args2]);
+      return function (...nextArgs) {
+        return curried.apply(null, [...args, ...nextArgs]);
       };
     }
   };
