@@ -5,8 +5,8 @@ const join = (a, b, c) => {
 function curry(fn) {
   return function curried(...args) {
     if (isArgsMet(args, fn, curry.placeholder)) return fn.apply(null, args);
-    return function (nextArgs) {
-      return fn.apply(null, mergeArgs(args, nextArgs));
+    return function (...nextArgs) {
+      return curried.apply(null, mergeArgs(args, nextArgs, curry.placeholder));
     };
   };
 }
@@ -16,11 +16,11 @@ function isArgsMet(args, fn, placeholder) {
   return args.slice(0, fn.length).every((item) => item !== placeholder);
 }
 
-function mergeArgs(argsTo, argsFrom) {
+function mergeArgs(argsTo, argsFrom, placeholder) {
   const mappedArgsTo = argsTo.map((item) =>
     item === placeholder && argsFrom.length > 0 ? argsFrom.shift() : item
   );
-  return [...mappedArgsTo, argsFrom];
+  return [...mappedArgsTo, ...argsFrom];
 }
 
 curry.placeholder = Symbol();
