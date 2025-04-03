@@ -1,18 +1,16 @@
 function completeAssign(target, ...sources) {
-  if (target === null) throw new Error("invalid target");
+  if (target === null || typeof target !== "object") {
+    throw new Error("Invalid target");
+  }
+
   target = Object(target);
+
   sources.forEach((source) => {
     if (source && typeof source === "object") {
-      Object.getOwnPropertyNames(source).forEach((prop) => {
-        const descriptor = Object.getOwnPropertyDescriptor(source, prop);
-        Object.defineProperty(target, prop, descriptor);
-      });
-      Object.getOwnPropertySymbols(source).forEach((prop) => {
-        const descriptor = Object.getOwnPropertyDescriptor(source, prop);
-        Object.defineProperty(target, prop, descriptor);
-      });
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     }
   });
+
   return target;
 }
 
@@ -50,5 +48,5 @@ const source = Object.create(
 
 source.d = 4;
 source.e = 5;
-
-console.log(completeAssign({}, source));
+const target = completeAssign({}, source);
+console.log(target);
