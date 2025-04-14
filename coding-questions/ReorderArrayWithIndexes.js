@@ -40,4 +40,4 @@ const B = [1, 5, 4, 3, 2, 0];
 
 sort(A, B);
 
-console.log(A);
+console.log(A, B);
